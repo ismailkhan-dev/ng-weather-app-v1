@@ -1,0 +1,65 @@
+<div class="container mx-auto h-auto w-1/2 mt-16 border">
+  <div class="flex flex-row justify-between border-b p-2 h-20">
+    <ng-container *ngIf="weatherResults">
+      <div>
+        <!-- city, country, lat/lon -->
+        <p class="text-3xl font-bold">
+          {{ weatherResults?.name }}, {{ weatherResults?.sys?.country }}
+        </p>
+
+        <div class="flex align-center justify-between">
+          <div>
+            <small class="pr-1"
+              >latitude: {{ weatherResults?.coord?.lat }}</small
+            >
+            <small>longitude: {{ weatherResults?.coord?.lon }}</small>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- time, sunrise/sunset -->
+        <p class="text-2xl text-right">{{ time }}</p>
+        <div class="flex align-center justify-between pt-1">
+          <div *ngIf="sunrise && sunset">
+            <small class="pr-1"
+              >sunrise: {{ sunrise | date: "shortTime" }}</small
+            >
+            <small>sunset: {{ sunset | date: "shortTime" }}</small>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="flex flex-row justify-between p-5 h-52">
+    <ng-container *ngIf="weatherResults">
+      <div class="p-2">
+        <!-- current temprature in celsius -->
+        <div class="text-7xl">
+          <p>{{ weatherResults?.main?.temp }}<span class="pl-1">°C</span></p>
+        </div>
+
+        <!-- weather (clouds, rain, snow) -->
+        <div class="p-2">
+          <p class="text-3xl">{{ weatherDescription }}</p>
+        </div>
+      </div>
+      <!-- weather image -->
+      <div>
+        <img
+          class="h-36 mr-16"
+          [src]="weatherIconURL"
+          [alt]="weatherDescription"
+        />
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- ALERT WARNING -->
+  <div class="bg-red-500">
+    <div class="border">
+      <h2>Special Weather Alert</h2>
+      <p>add alerts here if any</p>
+    </div>
+  </div>
+</div>

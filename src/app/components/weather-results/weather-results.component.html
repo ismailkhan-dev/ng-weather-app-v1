@@ -1,0 +1,38 @@
+<div class="container-center border-2 grid place-items-center h-auto">
+  <div class="h-24 w-auto flex flex-col justify-center items-center">
+    <!-- SEARCH BAR -->
+    <label for="" class="relative block">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </span>
+      <input
+        type="text"
+        name="search-input"
+        placeholder="Enter City Name..."
+        class="w-96 p-3 pl-10 border focus:outline-none"
+        #searchBar
+        [(ngModel)]="searchBarInput"
+        (keyup.enter)="getGeocodeLocation(searchBarInput)"
+      />
+      <button
+        class="p-3 border border-l-0 bg-sky-600"
+        (click)="getGeocodeLocation(searchBar.value)"
+      >
+        Search
+      </button>
+    </label>
+  </div>
+</div>

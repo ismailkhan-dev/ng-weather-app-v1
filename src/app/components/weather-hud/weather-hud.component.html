@@ -1,0 +1,106 @@
+<!-- BASIC WEATHER COMPONENT -->
+<app-main-forecast-display
+  [weatherResults]="weatherResults"
+  [time]="time"
+  [sunrise]="sunrise"
+  [sunset]="sunset"
+  [weatherDescription]="weatherDescription"
+  [weatherIcon]="weatherIcon"
+  [weatherIconURL]="weatherIconURL"
+></app-main-forecast-display>
+
+<!-- Weather Today -->
+<!-- High, Low, Wind, Sunrise, Sunset, Humidity, Pressure, Visibility, UV Index,  -->
+<div class="container mx-auto h-auto w-1/2 mt-16 border">
+  <!-- today's forecast header -->
+  <div class="mb-3">
+    <h3 class="text-2xl">Today's Forecast for Brampton, CA</h3>
+  </div>
+  <!-- today's details header -->
+  <div class="h-24 mb-4 bg-orange-400 flex flex-row justify-between">
+    <div>
+      <p>Feels Like:</p>
+      <p class="text-md">
+        {{ weatherResults?.main?.feels_like }}<span class="pl-2">°C</span>
+      </p>
+    </div>
+
+    <div>
+      <p>sunset: {{ sunset | date: "shortTime" }}</p>
+      <p>sunrise: {{ sunrise | date: "shortTime" }}</p>
+    </div>
+  </div>
+
+  <!-- details container -->
+  <div class="grid grid-rows-4 grid-flow-col-dense gap-3">
+    <div class="flex flex-row justify-between border p-6">
+      <!-- icon -->
+      <!-- text -->
+      <p>High / Low</p>
+      <!-- data -->
+      <p>
+        {{ weatherResults?.main?.temp_max }}<span>°C</span> /
+        {{ weatherResults?.main?.temp_min }}<span>°C</span>
+      </p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>Humidity</p>
+      <p>{{ weatherResults?.main?.humidity }}%</p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>Pressure</p>
+      <p>{{ weatherResults?.main?.pressure }} mb</p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>Visibility</p>
+      <p>{{ weatherResults?.visibility }}</p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>Wind</p>
+      <p>19 km</p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>Dew Point</p>
+      <p>-2</p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>UV Index</p>
+      <p>2 of 10</p>
+    </div>
+    <div class="flex flex-row justify-between border p-6">
+      <p>Moon Phase</p>
+      <p>Waxing</p>
+    </div>
+  </div>
+</div>
+
+<!-- DAILY FORECAST SNAPSHOT -->
+<!-- weather for morning, afternoon, evening, overnight. Temprature, weather icon, wind % -->
+<div class="container mx-auto h-auto w-1/2 mt-16 border p-2">
+  <div class="mb-3">
+    <h3 class="text-2xl">Today's Forecast for Brampton, CA</h3>
+  </div>
+
+  <div class="container flex flex-row align-center justify-evenly text-center">
+    <!-- morning: sunrise -->
+    <div class="border w-1/5">
+      <p class="text-2xl font-medium">Morning</p>
+      <p class="text-md">12<span class="pl-2">°C</span></p>
+    </div>
+    <!-- afternoon: 12PM -->
+    <div class="border w-1/5">
+      <p class="text-2xl font-medium">Afternoon</p>
+      <p>12<span class="pl-2">°C</span></p>
+    </div>
+    <!-- evening: sunset -->
+    <div class="border w-1/5">
+      <p class="text-2xl font-medium">Evening</p>
+      <p>12<span class="pl-2">°C</span></p>
+    </div>
+    <!-- overnight: 12AM -->
+    <div class="border w-1/5">
+      <p class="text-2xl font-medium">Overnight</p>
+      <p>12<span class="pl-2">°C</span></p>
+    </div>
+  </div>
+</div>
